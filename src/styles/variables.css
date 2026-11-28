@@ -1,0 +1,83 @@
+/* ==========================================================================
+   CSS Custom Properties (Design Tokens) - Kodai Surprise Events
+   Royal & Luxury Celebration Visual Identity
+   ========================================================================== */
+
+:root {
+  /* Kodaikanal Bloom: airy hillside greens, warm cream and the logo's rose heart. */
+  --color-forest-green: #214F3A;
+  --color-forest-dark:  #153729;
+  --color-deep-green:   #356B4B;
+  --color-royal-emerald:#275B40;
+  --color-warm-cream:   #FBF8F1;
+  --color-cream-light:  #FFFEFA;
+  --color-soft-gold:    #D5AE4B;
+  --color-gold-hover:   #B78D35;
+  --color-gold-metallic:#C9A54A;
+  --color-gold-bright:  #F4D97E;
+  --color-gold-light:   #F9EDC5;
+  --color-gold-bg:      rgba(213, 174, 75, 0.14);
+  --color-rose:         #D95F73;
+  --color-apricot:      #F29A79;
+  --color-peach:        #FFF0E9;
+  --color-ink:          #293B31;
+  --color-white:        #FFFFFF;
+  --color-dark-charcoal:#1F1F1F;
+  --color-text-body:    #3E4C42;
+  --color-text-muted:   #5D6A61;
+  --color-border:       rgba(33, 79, 58, 0.13);
+  --color-border-gold:  rgba(201, 165, 74, 0.4);
+  --color-whatsapp:     #25D366;
+  --color-whatsapp-hover:#1EBE5D;
+
+  /* Package Tier Custom Color Palettes */
+  --tier-silver-border: #C4CEC5;
+  --tier-silver-bg:     #F5F7F1;
+  --tier-silver-accent: #65766A;
+  --tier-silver-badge:  linear-gradient(135deg, #C4CEC5 0%, #65766A 100%);
+
+  --tier-gold-border:   #D6B234;
+  --tier-gold-bg:       #FFFBE8;
+  --tier-gold-accent:   #876A12;
+  --tier-gold-badge:    linear-gradient(135deg, #F6E8A2 0%, #D6B234 100%);
+
+  --tier-platinum-border:#E2A1A7;
+  --tier-platinum-bg:   linear-gradient(180deg, #FFFFFF 0%, #FFF0EF 100%);
+  --tier-platinum-accent:#B94C64;
+  --tier-platinum-badge:linear-gradient(135deg, #EEA6A9 0%, #D95F73 100%);
+
+  --tier-diamond-border:#6F9F7D;
+  --tier-diamond-bg:    linear-gradient(180deg, #FFFFFF 0%, #EAF3E7 100%);
+  --tier-diamond-accent:#2E7048;
+  --tier-diamond-badge: linear-gradient(135deg, #8FB99A 0%, #2E7048 100%);
+
+  --tier-premium-border:#D5AE4B;
+  --tier-premium-bg:    linear-gradient(135deg, #183D2D 0%, #214F3A 60%, #356B4B 100%);
+  --tier-premium-accent:#F4D97E;
+  --tier-premium-badge: linear-gradient(135deg, #FFF0C3 0%, #D5AE4B 55%, #A47E2D 100%);
+
+  /* Typography */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 2px 8px rgba(33, 79, 58, 0.06);
+  --shadow-md: 0 8px 24px rgba(33, 79, 58, 0.08);
+  --shadow-lg: 0 16px 40px rgba(33, 79, 58, 0.14);
+  --shadow-gold: 0 10px 30px rgba(201, 165, 74, 0.25);
+  --shadow-royal: 0 20px 50px rgba(21, 55, 41, 0.34);
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Container */
+  --container-max: 1220px;
+}
