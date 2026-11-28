@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { getWhatsAppUrl } from './utils/links';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
+import { AdminAuthProvider, RequireAdmin } from './context/AdminAuthProvider.jsx';
+import './styles/admin.css';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -12,7 +16,7 @@ import Packages from './pages/Packages';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 
-export default function App() {
+function PublicLayout() {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
@@ -37,7 +41,7 @@ export default function App() {
   );
 
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="app-layout">
         {/* Persistent Sticky Navbar */}
@@ -45,18 +49,7 @@ export default function App() {
 
         {/* Dynamic Route Pages */}
         <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/packages" element={<Packages />} />
-            <Route path="/packages/:serviceId" element={<Packages />} />
-            <Route path="/reviews" element={<Gallery />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* Catch-all route */}
-            <Route path="*" element={<Home />} />
-          </Routes>
+          <Outlet />
         </main>
 
         {/* Persistent Footer */}
@@ -86,6 +79,39 @@ export default function App() {
           )}
         </div>
       </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin"
+          element={
+            <AdminAuthProvider>
+              <RequireAdmin />
+            </AdminAuthProvider>
+          }
+        >
+          <Route index element={<AdminDashboard />} />
+          <Route path="*" element={<Navigate to="/admin" replace />} />
+        </Route>
+
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/packages" element={<Packages />} />
+          <Route path="/packages/:serviceId" element={<Packages />} />
+          <Route path="/reviews" element={<Gallery />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Home />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }
