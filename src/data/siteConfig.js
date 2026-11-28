@@ -5,7 +5,7 @@ export const siteConfig = {
     location: 'Kodaikanal',
   },
   contact: {
-    phoneDisplay: '8825404969',
+    phoneDisplay: '+91 8825404969',
     phoneHref: '+918825404969',
     email: 'kodaisurprises@gmail.com',
   },
