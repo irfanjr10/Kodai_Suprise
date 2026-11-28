@@ -1,71 +1,134 @@
-import React, { useState } from 'react';
-import { galleryData } from '../data/galleryData';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { reviewsData } from '../data/galleryData';
+
+const STORAGE_KEY = 'kodai-customer-reviews';
 
 export default function Gallery() {
-  const [filter, setFilter] = useState('All');
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [comment, setComment] = useState('');
+  const [customerReviews, setCustomerReviews] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
 
-  const categories = ['All', 'Proposals', 'Birthdays', 'Weddings', 'Anniversaries', 'Photoshoots'];
+  useEffect(() => {
+    try {
+      const savedReviews = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      setCustomerReviews(Array.isArray(savedReviews) ? savedReviews : []);
+    } catch {
+      setCustomerReviews([]);
+    }
+  }, []);
 
-  const filteredPhotos = filter === 'All'
-    ? galleryData
-    : galleryData.filter((item) => item.category === filter);
+  const submitReview = (event) => {
+    event.preventDefault();
+    if (!rating || !comment.trim()) return;
+
+    const review = {
+      id: `customer-${Date.now()}`,
+      rating,
+      comment: comment.trim(),
+    };
+    const updatedReviews = [review, ...customerReviews];
+
+    setCustomerReviews(updatedReviews);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedReviews));
+    setRating(0);
+    setHoverRating(0);
+    setComment('');
+    setSubmitted(true);
+  };
+
+  const allReviews = [
+    ...customerReviews,
+    ...reviewsData.map(({ id, rating, comment }) => ({ id, rating, comment })),
+  ];
 
   return (
-    <div className="gallery-page-view royal-page-bg">
-      <section
-        className="page-hero-banner royal-hero-banner"
-        style={{
-          backgroundImage: `linear-gradient(115deg, rgba(21,55,41,.62) 0%, rgba(33,79,58,.42) 58%, rgba(33,79,58,.25) 100%), url('https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1920&q=80')`
-        }}
-      >
+    <div className="reviews-page-view royal-page-bg">
+      <section className="page-hero-banner royal-hero-banner reviews-hero-banner">
         <div className="container">
-          <span className="section-tag royal-gold-pill">⚜️ Visual Splendor</span>
-          <h1 className="page-hero-title royal-heading">Curated Royal Gallery</h1>
+          <span className="section-tag royal-gold-pill">Customer Reviews</span>
+          <h1 className="page-hero-title royal-heading">Share Your Experience</h1>
           <p className="page-hero-desc">
-            Explore authentic moments of joy, romantic proposal decor, opulent wedding mandaps, and evening celebrations.
+            Leave a star rating and tell us about your celebration.
           </p>
         </div>
       </section>
 
       <section className="section-padding">
         <div className="container">
-          <div className="category-filters" style={{ marginBottom: '3.5rem' }}>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                className={`filter-pill royal-filter-pill ${filter === cat ? 'active' : ''}`}
-                onClick={() => setFilter(cat)}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          <div className="customer-review-layout">
+            <form className="customer-review-form" onSubmit={submitReview}>
+              <span className="section-tag">Write a Review</span>
+              <h2 className="section-title">How was your experience?</h2>
 
-          <div className="gallery-grid">
-            {filteredPhotos.map((photo) => (
-              <div key={photo.id} className="gallery-card royal-gallery-card">
-                <div className="gallery-img-container" style={{ height: '320px' }}>
-                  <img
-                    src={photo.image}
-                    alt={photo.title}
-                    className="gallery-img"
-                    loading="lazy"
-                  />
-                  <div className="gallery-overlay royal-gallery-overlay">
-                    <span className="gallery-category">{photo.category}</span>
-                    <h3 className="gallery-title">{photo.title}</h3>
-                    <span className="gallery-location">📍 {photo.location}</span>
-                  </div>
+              <fieldset className="star-rating-field">
+                <legend>Star rating</legend>
+                <div className="star-rating-input" onMouseLeave={() => setHoverRating(0)}>
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      type="button"
+                      key={star}
+                      className={star <= (hoverRating || rating) ? 'star active' : 'star'}
+                      onClick={() => setRating(star)}
+                      onMouseEnter={() => setHoverRating(star)}
+                      aria-label={`${star} star${star > 1 ? 's' : ''}`}
+                      aria-pressed={rating === star}
+                    >
+                      ★
+                    </button>
+                  ))}
                 </div>
-              </div>
-            ))}
-          </div>
+              </fieldset>
 
-          <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-            <Link to="/contact" className="btn btn-primary royal-gold-btn" style={{ padding: '1rem 2.75rem' }}>
-              Reserve Your Celebration Date →
-            </Link>
+              <label className="review-comment-label" htmlFor="customer-comment">
+                Your comment
+              </label>
+              <textarea
+                id="customer-comment"
+                className="review-comment-input"
+                value={comment}
+                onChange={(event) => setComment(event.target.value)}
+                placeholder="Tell us about the service..."
+                rows="5"
+                maxLength="800"
+                required
+              />
+
+              <button
+                type="submit"
+                className="btn btn-primary royal-gold-btn review-submit-btn"
+                disabled={!rating || !comment.trim()}
+              >
+                Submit Review
+              </button>
+              {submitted && (
+                <p className="review-success" role="status">
+                  Thank you! Your review has been added.
+                </p>
+              )}
+            </form>
+
+            <div className="customer-reviews-list">
+              <span className="section-tag">Customer Feedback</span>
+              <h2 className="section-title">What customers say</h2>
+              <div className="reviews-grid review-page-grid">
+                {allReviews.map((review) => (
+                  <article key={review.id} className="review-card">
+                    <div className="review-stars" aria-label={`${review.rating} out of 5 stars`}>
+                      {'★'.repeat(review.rating)}
+                      <span className="review-stars-empty">
+                        {'★'.repeat(5 - review.rating)}
+                      </span>
+                    </div>
+                    <p className="review-comment">"{review.comment}"</p>
+                    <div className="review-footer">
+                      <span className="review-badge">Customer Review</span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -51,6 +51,7 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/packages" element={<Packages />} />
             <Route path="/packages/:serviceId" element={<Packages />} />
+            <Route path="/reviews" element={<Gallery />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
             {/* Catch-all route */}
