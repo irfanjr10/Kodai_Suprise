@@ -6,7 +6,7 @@ export default function PackageCard({ pkg, onSelectPackage }) {
 
   // Direct WhatsApp booking message
   const whatsappUrl = getWhatsAppUrl(
-    `Hello Kodai Surprise Events, I would like to enquire about the "${name}" Birthday Package (${priceFormatted}) in Kodaikanal.`
+    `Hello Kodai Surprise Events, I would like to enquire about the "${name}" Birthday Package (${priceFormatted}).`
   );
 
   return (
@@ -23,7 +23,7 @@ export default function PackageCard({ pkg, onSelectPackage }) {
         <p className="package-tagline">{tagline}</p>
         <div className="package-price-wrap">
           <span className="package-price">{priceFormatted}</span>
-          <span className="package-price-note">All-inclusive setup</span>
+          <span className="package-price-note">Package price</span>
         </div>
       </div>
 

@@ -39,7 +39,7 @@ export default function Packages() {
   }[currentService.id] || { icon: '✨', theme: 'bespoke', caption: 'Made for your special occasion' };
   const packageOptions = currentService.id === 'birthday-celebrations'
     ? packagesData
-    : eventPackagesData[currentService.id];
+    : eventPackagesData[currentService.id] || [];
 
   const handleSelectPackage = (pkg) => {
     const dynamicPackageTitle = `${pkg.name} ${eventLabel} Package (${pkg.priceFormatted})`;
@@ -99,17 +99,16 @@ export default function Packages() {
         <div className="container event-hero-container">
           <span className="section-tag royal-gold-pill">{currentService.category} Collection</span>
           <h1 className="event-hero-title royal-heading">
-            {eventLabel} Celebration Packages
+            {packageOptions.length ? `${eventLabel} Celebration Packages` : `${currentService.title} Planning`}
           </h1>
           <p className="event-hero-desc">
             {currentService.fullDesc}
           </p>
 
           <div className="event-quick-meta">
-            <span className="meta-pill royal-pill">Kodaikanal & nearby venues</span>
             <span className="meta-pill royal-pill">Thoughtfully planned setup</span>
             <span className="meta-pill royal-pill">
-              5 curated collections with clear pricing
+              {packageOptions.length ? 'Five package options' : 'Planned to your requirements'}
             </span>
           </div>
         </div>
@@ -119,7 +118,7 @@ export default function Packages() {
       <section className="event-switcher-bar royal-switcher-bar">
         <div className="container">
           <div className="switcher-header">
-            <span className="switcher-hint">Choose Event Type to Customize Packages:</span>
+            <span className="switcher-hint">Choose an event type:</span>
           </div>
           <div className="event-tabs-scroll">
             {servicesData.map((service) => {
@@ -143,17 +142,22 @@ export default function Packages() {
       <section className="packages-grid-section section-padding">
         <div className="container">
           <div className="section-header">
-            <span className="section-tag royal-gold-pill">Find your collection</span>
+            <span className="section-tag royal-gold-pill">
+              {packageOptions.length ? 'Find your collection' : 'Tailored to your event'}
+            </span>
             <h2 className="section-title">
-              Bespoke {eventLabel} Packages & Pricing
+              {packageOptions.length ? `Bespoke ${eventLabel} Packages & Pricing` : 'Custom Event Planning'}
             </h2>
             <p className="section-subtitle">
-              Explore five thoughtfully tiered experiences, with clear inclusions and pricing for every celebration.
+              {packageOptions.length
+                ? 'Explore five thoughtfully tiered packages with clear inclusions and pricing.'
+                : 'This event will be planned according to your requirements, with charges quoted accordingly.'}
             </p>
           </div>
 
-          <div className="royal-packages-grid">
-            {packageOptions.map((pkg) => {
+          {packageOptions.length > 0 && (
+            <div className="royal-packages-grid">
+              {packageOptions.map((pkg) => {
               const tier = getTierMeta(pkg.id);
               const dynamicPackageName = `${pkg.name} ${eventLabel}`;
               const priceLabel = pkg.priceFormatted;
@@ -220,26 +224,48 @@ export default function Packages() {
                   </div>
                 </article>
               );
-            })}
-          </div>
-
-          {/* Royal Custom Concierge Callout */}
-          <div className="royal-concierge-card">
-            <div className="concierge-crest">⚜️</div>
-            <div className="concierge-info">
-              <h3>Looking for Bespoke Custom Decoration?</h3>
-              <p>
-                From custom 24K gold foil monogram backdrops and grand floral chandeliers to vintage car arrivals and champagne pyrotechnics, our master designers create tailor-made royal experiences.
-              </p>
+              })}
             </div>
-            <button
-              onClick={() => navigate('/contact', { state: { eventType: currentService.title } })}
-              className="btn btn-primary royal-gold-btn"
-              style={{ whiteSpace: 'nowrap' }}
-            >
-              VIP Concierge Enquiry
-            </button>
-          </div>
+          )}
+
+          {packageOptions.length ? (
+            <>
+              <p className="section-subtitle">
+                No travel charges are collected for events within a 10 km radius of Kodaikanal. Beyond 10 km, travel charges are calculated according to distance.
+              </p>
+              <div className="royal-concierge-card">
+                <div className="concierge-crest">⚜️</div>
+                <div className="concierge-info">
+                  <h3>Need a Custom Package Detail?</h3>
+                  <p>Contact us to discuss custom requests for your celebration.</p>
+                </div>
+                <button
+                  onClick={() => navigate('/contact', { state: { eventType: currentService.title } })}
+                  className="btn btn-primary royal-gold-btn"
+                  style={{ whiteSpace: 'nowrap' }}
+                >
+                  Custom Enquiry
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="royal-concierge-card">
+              <div className="concierge-crest">✦</div>
+              <div className="concierge-info">
+                <h3>Plan This Event With Us</h3>
+                <p>
+                  We’ll plan this event according to your requirements and share the charges accordingly. No travel charges are collected for events within a 10 km radius of Kodaikanal. Beyond 10 km, travel charges are calculated according to distance.
+                </p>
+              </div>
+              <button
+                onClick={() => navigate('/contact', { state: { eventType: currentService.title } })}
+                className="btn btn-primary royal-gold-btn"
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                Request a Quote
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </div>

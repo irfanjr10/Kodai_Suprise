@@ -55,15 +55,15 @@ export default function ContactSection({ selectedServiceOrPackage }) {
           <div className="contact-info-card">
             <h3 className="contact-card-title">Bookings & Enquiries</h3>
             <p className="contact-card-desc">
-              We coordinate decorations at all major resorts, homestays, and private villas across Kodaikanal.
+              Contact us to plan a celebration tailored to your requirements.
             </p>
 
             <div className="info-items-list">
               <div className="info-item">
                 <span className="info-icon">📍</span>
                 <div>
-                  <h4>Base Location & Service Area</h4>
-                  <p>Kodaikanal, Vattakanal, Vilpatti, Shenbaganur & Surrounding Hills, Tamil Nadu</p>
+                  <h4>Event Travel</h4>
+                  <p>No travel charges are collected for events within a 10 km radius of Kodaikanal. Beyond 10 km, travel charges are calculated according to distance.</p>
                 </div>
               </div>
 
@@ -71,7 +71,7 @@ export default function ContactSection({ selectedServiceOrPackage }) {
                 <span className="info-icon">📞</span>
                 <div>
                   <h4>Phone Support</h4>
-                  <p>{siteConfig.contact.phoneDisplay}</p>
+                  <p><a href={`tel:${siteConfig.contact.phoneHref}`}>{siteConfig.contact.phoneDisplay}</a></p>
                 </div>
               </div>
 
@@ -79,7 +79,7 @@ export default function ContactSection({ selectedServiceOrPackage }) {
                 <span className="info-icon">✉️</span>
                 <div>
                   <h4>Email Enquiries</h4>
-                  <p>{siteConfig.contact.email}</p>
+                  <p><a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a></p>
                 </div>
               </div>
             </div>

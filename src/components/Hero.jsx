@@ -10,10 +10,6 @@ export default function Hero() {
       
       <div className="container hero-container">
         <div className="hero-content">
-          <div className="hero-badge royal-badge">
-            <span>In the Heart of Kodaikanal</span>
-          </div>
-
           <h1 className="hero-title royal-title">
             Make Every Moment
             <span className="hero-title-accent">Special.</span>
@@ -21,7 +17,7 @@ export default function Hero() {
 
           <p className="hero-description royal-description">
             <span className="hero-description-highlight">
-              From heartfelt proposals to joyful birthdays and elegant weddings,
+              From heartfelt proposals to joyful birthdays and intimate celebrations,
             </span>
             <span className="hero-description-support">
               we style and photograph celebrations that feel like you.

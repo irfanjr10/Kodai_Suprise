@@ -18,7 +18,7 @@ export default function ServicesSection({ onSelectService }) {
           <span className="section-tag">Our Offerings</span>
           <h2 className="section-title">Premium Event Decoration & Photography</h2>
           <p className="section-subtitle">
-            From intimate mountain proposals to majestic hill resort weddings, explore our 9 signature event services in Kodaikanal.
+            From intimate proposals to majestic weddings, explore our event services.
           </p>
 
           {/* Filter Pills */}

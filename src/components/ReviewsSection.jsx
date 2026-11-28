@@ -9,7 +9,7 @@ export default function ReviewsSection() {
           <span className="section-tag">Client Experiences</span>
           <h2 className="section-title">Loved by Couples & Families</h2>
           <p className="section-subtitle">
-            Read heartwarming impressions from clients who celebrated their milestone moments with us in Kodaikanal.
+            Read heartwarming impressions from clients who celebrated their milestone moments with us.
           </p>
         </div>
 

@@ -10,7 +10,7 @@ export default function PackagesSection({ onSelectPackage }) {
           <span className="section-tag">Birthday Surprises</span>
           <h2 className="section-title">Transparent Birthday Packages</h2>
           <p className="section-subtitle">
-            Celebrate birthdays in Kodaikanal with complete peace of mind. Choose from our 5 curated packages with clear pricing in Indian rupees and zero hidden setup charges.
+            Choose from five birthday packages with clear pricing and inclusions.
           </p>
         </div>
 
@@ -24,6 +24,9 @@ export default function PackagesSection({ onSelectPackage }) {
             />
           ))}
         </div>
+        <p className="section-subtitle">
+          No travel charges are collected for events within a 10 km radius of Kodaikanal. Beyond 10 km, travel charges are calculated according to distance.
+        </p>
 
         {/* Customization Callout */}
         <div className="package-custom-note">

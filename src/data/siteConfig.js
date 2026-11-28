@@ -5,22 +5,14 @@ export const siteConfig = {
     location: 'Kodaikanal',
   },
   contact: {
-    phoneDisplay: 'Add business phone',
-    phoneHref: '',
-    email: 'Add business email',
+    phoneDisplay: '8825404969',
+    phoneHref: '+918825404969',
+    email: 'kodaisurprises@gmail.com',
   },
   social: {
     instagram: '',
     facebook: '',
     youtube: '',
-    whatsapp: '',
+    whatsapp: 'https://wa.me/918825404969',
   },
-  serviceAreas: [
-    'Kodaikanal Town',
-    'Kodaikanal Lake',
-    'Vattakanal',
-    'Vilpatti',
-    'Shenbaganur',
-    'Mannavanur',
-  ],
 };
