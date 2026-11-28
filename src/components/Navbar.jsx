@@ -41,7 +41,7 @@ export default function Navbar() {
           <img src="/brand-mark.jpg" className="brand-icon" alt="" aria-hidden="true" />
           <div className="brand-text">
             <span className="brand-title">Kodai Surprise</span>
-            <span className="brand-subtitle">Events & Photography • Kodaikanal</span>
+            <span className="brand-subtitle">Events & Photography</span>
           </div>
         </Link>
 

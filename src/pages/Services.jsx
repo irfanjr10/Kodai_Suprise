@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { servicesData } from '../data/servicesData';
+import { packageEventIds } from '../data/packagesData';
 
 export default function Services() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -21,7 +22,7 @@ export default function Services() {
         }}
       >
         <div className="container">
-          <span className="section-tag royal-gold-pill">⚜️ 9 Masterpiece Collections</span>
+          <span className="section-tag royal-gold-pill">⚜️ Event Services</span>
           <h1 className="page-hero-title royal-heading">Royal Event Decoration & Photography</h1>
           <p className="page-hero-desc">
             Discover our curated portfolio of grand celebration stages, romantic candlelit canopies, and cinematic drone captures.
@@ -44,7 +45,7 @@ export default function Services() {
             ))}
           </div>
 
-          {/* 9 Services Grid */}
+          {/* Services Grid */}
           <div className="services-grid">
             {filteredServices.map((service) => (
               <div key={service.id} className="service-card royal-service-card">
@@ -65,12 +66,26 @@ export default function Services() {
                     ))}
                   </ul>
 
-                  <button
-                    onClick={() => navigate(`/packages/${service.id}`)}
-                    className="btn btn-outline-gold service-btn royal-gold-action-btn"
-                  >
-                    View {service.title.split(' ')[0]} Packages (₹) →
-                  </button>
+                  {packageEventIds.includes(service.id) ? (
+                    <button
+                      onClick={() => navigate(`/packages/${service.id}`)}
+                      className="btn btn-outline-gold service-btn royal-gold-action-btn"
+                    >
+                      View {service.title.split(' ')[0]} Packages (₹) →
+                    </button>
+                  ) : (
+                    <>
+                      <p className="service-desc">
+                        This event is planned according to your requirements, with charges quoted accordingly.
+                      </p>
+                      <button
+                        onClick={() => navigate('/contact', { state: { eventType: service.title } })}
+                        className="btn btn-outline-gold service-btn royal-gold-action-btn"
+                      >
+                        Plan Your Event →
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             ))}

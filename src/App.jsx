@@ -33,7 +33,7 @@ export default function App() {
   };
 
   const whatsappUrl = getWhatsAppUrl(
-    'Hello Kodai Surprise Events, I would like to check availability for an event decoration / photoshoot in Kodaikanal.'
+    'Hello Kodai Surprise Events, I would like to check availability for an event decoration or photoshoot.'
   );
 
   return (

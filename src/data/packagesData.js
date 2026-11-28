@@ -101,6 +101,13 @@ export const packagesData = [
   }
 ];
 
+export const packageEventIds = [
+  'birthday-celebrations',
+  'anniversary-decorations',
+  'proposal-decorations',
+  'bride-groom-decorations'
+];
+
 const makePricedTiers = (tiers) => tiers.map((tier, index) => {
   const priceTier = packagesData[index];
   return {
@@ -138,7 +145,7 @@ export const eventPackagesData = {
   ]),
   'proposal-decorations': makePricedTiers([
     {
-      tagline: 'A heartfelt proposal moment framed by a beautiful Kodaikanal view.',
+      tagline: 'A heartfelt proposal moment framed by a beautiful view.',
       inclusions: ['Scenic viewpoint coordination', 'Romantic proposal styling', 'Illuminated MARRY ME letters']
     },
     {
@@ -178,116 +185,6 @@ export const eventPackagesData = {
     {
       tagline: 'A bespoke welcome experience styled across the couple’s key moments.',
       inclusions: ['Signature bridal suite transformation', 'Tailored Haldi and Mehendi floral styling', 'Personalized luggage tags and hampers', 'Unified welcome decor concept', 'Custom finishing details']
-    }
-  ]),
-  'wedding-decorations': makePricedTiers([
-    {
-      tagline: 'A considered ceremony setup that celebrates the natural hill setting.',
-      inclusions: ['Outdoor mandap styling concept', 'Eco-friendly hill decor options', 'Ceremony color direction']
-    },
-    {
-      tagline: 'A more complete ceremony setting with a welcoming entrance.',
-      inclusions: ['Pine forest mandap styling', 'Grand entrance walkway accents', 'Eco-friendly decor options']
-    },
-    {
-      tagline: 'A coordinated ceremony look with a floral focal point.',
-      inclusions: ['Outdoor mandap styling', 'Floral stage design', 'Entrance walkway styling', 'Guest seating floral accents']
-    },
-    {
-      tagline: 'An elevated destination wedding look across the main guest moments.',
-      inclusions: ['Pine forest mandap styling', 'Grand entrance treatment', 'Lush floral stage concept', 'Guest seating decor accents', 'Eco-friendly hill decor options']
-    },
-    {
-      tagline: 'A bespoke wedding design concept tailored to your venue and celebration.',
-      inclusions: ['Signature mandap and stage styling', 'Grand entrance walkway design', 'Coordinated guest seating florals', 'Venue-wide decor direction', 'Eco-conscious styling options']
-    }
-  ]),
-  'reception-decorations': makePricedTiers([
-    {
-      tagline: 'A polished reception focal point with warm evening ambience.',
-      inclusions: ['Illuminated stage backdrop', 'Ambient lighting direction', 'Reception color styling']
-    },
-    {
-      tagline: 'A more luminous reception with elegant overhead details.',
-      inclusions: ['Styled stage backdrop', 'Fairy light ceiling concept', 'Ambient hill lighting']
-    },
-    {
-      tagline: 'A coordinated evening look with statement lighting and florals.',
-      inclusions: ['Illuminated stage styling', 'Crystal chandelier ceiling concept', 'Stage floral accents', 'Cocktail area styling']
-    },
-    {
-      tagline: 'A grander celebration atmosphere with layered guest experiences.',
-      inclusions: ['Statement reception stage', 'Chandelier and ceiling lighting concept', 'Mirror dance floor styling', 'Cocktail area styling', 'Ambient venue lighting']
-    },
-    {
-      tagline: 'A bespoke reception design that brings the full evening together.',
-      inclusions: ['Signature stage and backdrop concept', 'Layered chandelier and ambient lighting', 'Mirror dance floor styling', 'Cocktail area design', 'Coordinated venue-wide visual direction']
-    }
-  ]),
-  'pre-wedding-photoshoots': makePricedTiers([
-    {
-      tagline: 'A relaxed couple session among Kodaikanal’s scenic locations.',
-      inclusions: ['Scenic location guidance', 'Candid couple portraits', 'High-resolution color-graded photos']
-    },
-    {
-      tagline: 'A more styled shoot with a little extra cinematic atmosphere.',
-      inclusions: ['Scenic location guidance', 'Props or smoke-bomb setup concept', 'High-resolution color-graded photos', 'Cinematic video capture']
-    },
-    {
-      tagline: 'A signature story session shaped around your locations and style.',
-      inclusions: ['Location and timing guidance', 'Styled props or smoke-bomb concept', 'Color-graded photo collection', 'Cinematic video capture']
-    },
-    {
-      tagline: 'An elevated photo and film experience across scenic backdrops.',
-      inclusions: ['Guided scenic shoot plan', 'Drone cinematography where permitted', 'Styled visual concepts', 'Color-graded photos', 'Cinematic video capture']
-    },
-    {
-      tagline: 'A bespoke editorial-style story of your relationship in the hills.',
-      inclusions: ['Tailored location and shoot plan', 'Drone cinematography where permitted', 'Multiple visual concepts', 'High-resolution color-graded photos', 'Cinematic photo and video coverage']
-    }
-  ]),
-  'post-wedding-photoshoots': makePricedTiers([
-    {
-      tagline: 'A relaxed newlywed portrait session in a beautiful hill setting.',
-      inclusions: ['Scenic hill resort shoot', 'Candid couple portraits', 'Sunset or misty morning session direction']
-    },
-    {
-      tagline: 'A more editorial session with time for changing scenery and mood.',
-      inclusions: ['Scenic shoot guidance', 'Candid and posed portraits', 'Sunset or misty morning timing', 'Photo album curation']
-    },
-    {
-      tagline: 'A thoughtfully styled newlywed story across the hills.',
-      inclusions: ['Scenic location direction', 'Editorial couple portraits', 'Misty morning or sunset styling', 'Curated photo album concept']
-    },
-    {
-      tagline: 'A richer portrait experience with a refined keepsake collection.',
-      inclusions: ['Tailored hill shoot plan', 'Candid and editorial portraits', 'Scenic resort locations', 'Curated album design direction']
-    },
-    {
-      tagline: 'A bespoke honeymoon story, captured in a relaxed editorial style.',
-      inclusions: ['Personalized scenic shoot plan', 'Newlywed portrait session', 'Sunset and misty morning styling options', 'Premium photo album curation', 'Custom visual direction']
-    }
-  ]),
-  'custom-event-decorations': makePricedTiers([
-    {
-      tagline: 'A simple, thoughtful setup shaped around your occasion.',
-      inclusions: ['Event concept direction', 'Customized prop accents', 'Tailored styling for your occasion']
-    },
-    {
-      tagline: 'A more styled event with a clear visual theme.',
-      inclusions: ['Concept mood board', 'Customized props and staging', 'Boho picnic styling option', 'Venue styling direction']
-    },
-    {
-      tagline: 'A coordinated setup with thoughtful details across the event.',
-      inclusions: ['Custom event concept', 'Themed staging and props', 'Boho picnic setup option', 'Vendor coordination']
-    },
-    {
-      tagline: 'A more complete event design, from first concept to guest experience.',
-      inclusions: ['Personalized mood board', 'Expanded staging and decor styling', 'Vendor coordination', 'Guest-area styling direction']
-    },
-    {
-      tagline: 'A fully bespoke event concept designed around your vision and venue.',
-      inclusions: ['Signature event mood board', 'Custom props and staging concept', 'Full vendor coordination', 'Venue-wide styling direction', 'Tailored guest experience details']
     }
   ])
 };

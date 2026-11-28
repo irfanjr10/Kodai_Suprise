@@ -15,9 +15,9 @@ export default function GallerySection() {
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Visual Portfolio</span>
-          <h2 className="section-title">Memories Captured in Kodaikanal</h2>
+          <h2 className="section-title">Memories Captured with Care</h2>
           <p className="section-subtitle">
-            Explore authentic setups, mountain view decorations, and romantic photoshoots crafted across resorts, private villas, and viewpoints in the hills.
+            Explore authentic event setups, thoughtful decorations, and romantic photoshoots.
           </p>
 
           <div className="category-filters">

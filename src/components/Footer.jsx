@@ -13,7 +13,7 @@ export default function Footer() {
             <span className="footer-logo-title">Kodai Surprise</span>
           </div>
           <p className="footer-about">
-            Bespoke event styling and cinematic photography for proposals, intimate celebrations and destination weddings across Kodaikanal.
+            Bespoke event styling and photography for proposals, intimate celebrations, and weddings.
           </p>
           <div className="footer-social-links">
             {siteConfig.social.instagram && <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon-btn">Ig</a>}
@@ -48,20 +48,12 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Service Locations & Info */}
+        {/* Contact Info */}
         <div className="footer-col">
-          <h4 className="footer-heading">Service Area</h4>
-          <p className="footer-area-text">
-            Based in <strong>Kodaikanal</strong>, serving:
-          </p>
-          <ul className="footer-locations-list">
-            {siteConfig.serviceAreas.map((area) => (
-              <li key={area}>{area}</li>
-            ))}
-          </ul>
+          <h4 className="footer-heading">Contact</h4>
           <div className="footer-direct-contact">
-            <p><strong>Enquiries:</strong> {siteConfig.contact.phoneDisplay}</p>
-            <p><strong>Email:</strong> {siteConfig.contact.email}</p>
+            <p><strong>Phone:</strong> <a href={`tel:${siteConfig.contact.phoneHref}`}>{siteConfig.contact.phoneDisplay}</a></p>
+            <p><strong>Email:</strong> <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a></p>
           </div>
         </div>
       </div>
@@ -73,7 +65,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Kodai Surprise Events. All rights reserved.
           </p>
           <p className="footer-tagline">
-            Crafted with care in Kodaikanal, Tamil Nadu, India.
+            Crafted with care by Kodai Surprise Events.
           </p>
         </div>
       </div>

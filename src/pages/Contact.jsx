@@ -74,15 +74,15 @@ ${formData.selectedPackage ? `- Selected Package: ${formData.selectedPackage}\n`
               <div className="concierge-crown">👑</div>
               <h3 className="contact-card-title">VIP Hospitality Desk</h3>
               <p className="contact-card-desc">
-                Dedicated event coordination across luxury resorts, heritage villas, and private celebration estates.
+                Tell us about your event and we’ll help plan it to your requirements.
               </p>
 
               <div className="info-items-list">
                 <div className="info-item">
-                  <span className="info-icon">📍</span>
+                  <span className="info-icon">✦</span>
                   <div>
-                    <h4>Service Coverage</h4>
-                    <p>Kodaikanal, Vattakanal, Vilpatti, Shenbaganur, Mannavanur & Surrounding Estates</p>
+                    <h4>Event Travel</h4>
+                    <p>No travel charges are collected for events within a 10 km radius of Kodaikanal. Beyond 10 km, travel charges are calculated according to distance.</p>
                   </div>
                 </div>
 
@@ -90,7 +90,7 @@ ${formData.selectedPackage ? `- Selected Package: ${formData.selectedPackage}\n`
                   <span className="info-icon">01</span>
                   <div>
                     <h4>Priority Concierge Line</h4>
-                    <p>{siteConfig.contact.phoneDisplay}</p>
+                    <p><a href={`tel:${siteConfig.contact.phoneHref}`}>{siteConfig.contact.phoneDisplay}</a></p>
                   </div>
                 </div>
 
@@ -98,7 +98,7 @@ ${formData.selectedPackage ? `- Selected Package: ${formData.selectedPackage}\n`
                   <span className="info-icon">02</span>
                   <div>
                     <h4>Official Concierge Email</h4>
-                    <p>{siteConfig.contact.email}</p>
+                    <p><a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a></p>
                   </div>
                 </div>
               </div>
@@ -261,7 +261,7 @@ ${formData.selectedPackage ? `- Selected Package: ${formData.selectedPackage}\n`
                       id="requirements"
                       name="requirements"
                       rows="3"
-                      placeholder="Specify your resort or private villa in Kodaikanal, surprise entry timing, or custom flower color theme..."
+                      placeholder="Tell us about your event, preferred setup, or custom theme..."
                       value={formData.requirements}
                       onChange={handleChange}
                       className="form-textarea royal-input"
